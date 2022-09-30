@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1664407328 source:d:\repos\cpp\cppaio4\booki\chapter03\sayhello\sayhello\main.cpp
+	<iostream>
+	<memory>
+	<optional>
+
