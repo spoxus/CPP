@@ -1,0 +1,65 @@
+---
+apt_repositories: []
+
+packages_to_install:
+  - git
+  - vim
+  - curl
+  - nginx
+  - apache2-utils
+  - docker.io=19.03.8-0ubuntu1.20.04
+  - sysstat
+  - python3-pip
+  - stress
+  - bpfcc-tools
+  # dtrace
+  - systemtap
+  - systemtap-sdt-dev
+  - zlib1g-dev
+  - libffi-dev
+  # cgroups utils
+  - cgroup-lite
+  - cgroup-tools
+  - cgroupfs-mount
+  - libcgroup1
+  # wordpress
+  - apache2
+  - wordpress
+  - php
+  - libapache2-mod-php
+  - mysql-server
+  - php-mysql
+  - net-tools
+  # man pages
+  - manpages
+  - manpages-dev
+  # man 3
+  - manpages-posix
+  - manpages-posix-dev
+  # seccomp
+  - libseccomp-dev
+  # java
+  - openjdk-8-jdk
+  - postgresql
+  - postgresql-contrib
+
+packages_to_remove:
+  - libreoffice-common
+  - libreoffice-core
+  - libreoffice-core-nogui
+  - libreoffice-calc
+  - libreoffice-writer
+  - libreoffice-draw
+  - libreoffice-help-en-gb
+  - libreoffice-help-en-us
+  - thunderbird
+  - gnome-getting-started-docs
+  - example-content
+  - rhythmbox
+  - rhythmbox-data
+
+docker_images_to_pull:
+  - ubuntu:focal-20200423
+  - nginx:1.17.7-alpine
+  - bloomberg/goldpinger:v3.0.0
+  - alpine:3.11
