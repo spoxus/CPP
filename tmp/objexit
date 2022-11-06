@@ -1,0 +1,13 @@
+#!/usr/bin/bash
+
+# C/C++ exits unexpectedly
+# find out which object files call (import) the
+# exit function
+
+# nm (Unix), dumpbin (Windows), javap (Java)
+
+# List symbols in all ojbect files prefixed by file name
+nm -A *.o |
+
+# List lines ending in 'U exit'
+grep 'U exit$'

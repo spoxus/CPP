@@ -1,0 +1,9 @@
+#/usr/bin/bash
+
+# Attempt to build all affected files redirecting
+# standard error -> standard output
+make -k 2>&1 |
+# Print name of file where the eoor occured
+gawk -F: '/ignoring return value/ { print $1 }' |
+# List each file only once
+sort -u
