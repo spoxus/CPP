@@ -1,0 +1,65 @@
+#!/usr/bin/bash
+
+# C/C++ exits unexpectedly
+# find out which object files call (import) the
+# exit function
+
+# nm (Unix), dumpbin (Windows), javap (Java)
+
+# List symbols in all ojbect files prefixed by file name
+nm -A *.o |
+
+# List lines ending in 'U exit'
+grep 'U exit$'#/usr/bin/bash
+
+# Attempt to build all affected files redirecting
+# standard error -> standard output
+make -k 2>&1 |
+# Print name of file where the eoor occured
+gawk -F: '/ignoring return value/ { print $1 }' |
+# List each file only once
+sort -u
+
+
+# eliminate timestamps by displaying starting from the 4th field
+cut -d ' ' -f 4- /var/log/dpkg.log
+
+# shell command for abbreviated Git hash of the last commit
+git log -n 1 --format='constant string version = "%h";'
+#and embed into source code
+
+#
+sudo apt install glibc-source
+
+
+
+# obtain path
+echo $PATH |
+# split the :-separated path into sepatate lines
+sed 's/:/\n/g' |
+# for each line (path element)
+while read path ; do
+    # display elapsed time for searching through it
+    PATH=$path:/usr/bin time -f "%e $path" which ls >/dev/null
+done
+
+# find ' / '
+grep -r ' / ' |
+# eliminate those involving sizeof
+grep -v '/ sizeof' |
+# colour divisors for easy inspection
+grep --color=always ' / [^0-9A-Z][^,;)]*' |
+# remove duplicates
+sort -U
+
+# output lines that call open
+grep 'open(' *.cpp |
+# remove those with gcmd
+grep -v gcmd |
+# print the second field separated by quotes
+awk -F\" '{print $2}'
+
+# The caret ^ and the dollar sign $ are meta-characters that
+# respectively match the empty string at the beginning and end of a
+# line.
+
