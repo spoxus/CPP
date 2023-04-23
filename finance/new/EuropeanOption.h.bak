@@ -1,0 +1,48 @@
+//module;
+
+#include <string>
+#include <cmath>
+using std::string;
+
+//export module EuropeanOption;
+
+//export 
+class EuropeanOption {
+public:
+    double call_price() const;
+    double put_price()  const;
+    double call_delta() const;
+    double put_delta()  const;
+
+    double r;       // risk-free interest rate
+    double sig;     // volatility of the relative price change: Σ σ
+    double K;       // strike price
+    double T;       // time to expiration (in years)
+    double U;       // current underlying price
+    double b;       // cost-of-carry
+
+    EuropeanOption() : r{0.08}, sig{0.3}, K{65.0}, T{0.25}, U{60.0}, b{r}, opt_type{"C"} {}
+    EuropeanOption(const EuropeanOption& o2) {copy(o2);};
+    EuropeanOption(const string& T) {};
+
+    virtual ~EuropeanOption() {};
+
+    EuropeanOption& operator = (const EuropeanOption&);
+
+    double  price() const;
+    double  delta() const;
+    void    toggle() {if (opt_type == "C") opt_type = "P"; else opt_type = "C";};
+    void    set_type(string);
+
+private:
+    void init();
+    void copy(const EuropeanOption&);
+    inline double tmp() const {return sig * sqrt(T);}
+    inline double d1()  const {return (log(U / K) + (b + (sig * sig) * 0.5) * T) / tmp();}
+    inline double d2()  const {return d1() - tmp();}
+    double n(double)    const;  // Gaussian functions
+    double N(double)    const;  // culmulative normal distribution
+
+    string opt_type;    // call/put
+
+};
