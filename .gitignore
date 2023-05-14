@@ -6,6 +6,16 @@
 *.so
 *.dylib
 
+
+tropic/*.o
+tropic/tropic
+tropic/.vscode
+tropic/test/*.o
+alaya/mktdata/dbases/bakbig.dat
+alaya/mktdata/dbases/bakbig.txt
+alaya/mktdata/dbases/baktest.dat
+alaya/mktdata/dbases/baktest.txt
+
 # Test binary, built with `go test -c`
 *.test
 
@@ -18,4 +28,10 @@
 .vscode/
 .idea/
 
+.cache/
+.config/
+.java/
+.lesshst
+.local/
+.mozilla/
 
